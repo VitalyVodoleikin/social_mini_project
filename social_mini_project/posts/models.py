@@ -1,15 +1,24 @@
 from django.db import models
-from users.models import CustomUser
+
 
 class Post(models.Model):
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='posts')
-    content = models.TextField(max_length=1000, blank=True, null=True)
-    image = models.ImageField(blank=True, null=True, upload_to='posts/')
+    author = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE, related_name='posts')
+    content = models.TextField(verbose_name="Текст поста", blank=False, help_text="Минимум 2 символа")
+    image = models.ImageField(verbose_name="Изображение", blank=False, upload_to='posts/%Y/%m/%d/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-created_at']  # сортировка по дате (новые сверху)
+        ordering = ('-created_at',)  # сортировка по дате (новые сверху)
+        indexes = (
+            models.Index(
+                fields=[
+                    'author',
+                    '-created_at'
+                ]
+            ),
+        )
 
     def __str__(self):
-        return f'Post by {self.author.username}'
+        preview = (self.content[:20] + "...") if self.content else ""
+        return f'Post by {self.author.username}: {preview}'
