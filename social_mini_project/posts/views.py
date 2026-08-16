@@ -22,6 +22,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
 
 class PostListView(ListView):
     model = Post

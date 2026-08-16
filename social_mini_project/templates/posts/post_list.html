@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Лента постов{% endblock %}
+
+{% block content %}
+  <h1>Лента постов</h1>
+
+  {% if posts %}
+    {% for post in posts %}
+      <article style="margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
+        <h2>
+          <a href="{% url 'posts:post_detail' post.pk %}">
+            {{ post|truncatechars:50 }}
+          </a>
+        </h2>
+        <p><small>Автор: {{ post.author.username }} • {{ post.created_at|date:"d.m.Y H:i" }}</small></p>
+
+        {% if post.content %}
+          <p>{{ post.content|linebreaks }}</p>
+        {% endif %}
+
+        {% if post.image %}
+          <img src="{{ post.image.url }}" alt="Изображение к посту" style="max-width: 100%; height: auto;">
+        {% endif %}
+
+        <p>
+          <a href="{% url 'posts:post_detail' post.pk %}" class="btn">Подробнее</a>
+          {% if user == post.author %}
+            <a href="{% url 'posts:post_edit' post.pk %}" class="btn">Редактировать</a>
+            <a href="{% url 'posts:post_delete' post.pk %}" class="btn" style="color: red;">Удалить</a>
+          {% endif %}
+        </p>
+      </article>
+    {% endfor %}
+
+    <!-- Пагинация -->
+    <nav aria-label="Pagination">
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">← Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+          Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Следующая →</a>
+        {% endif %}
+      </span>
+    </nav>
+  {% else %}
+    <p>Постов пока нет.</p>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <p><a href="{% url 'posts:post_create' %}" class="btn">Создать пост</a></p>
+  {% else %}
+    <p><a href="{% url 'login' %}" class="btn">Войдите, чтобы создавать посты</a></p>
+  {% endif %}
+{% endblock %}

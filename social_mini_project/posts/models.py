@@ -22,3 +22,7 @@ class Post(models.Model):
     def __str__(self):
         preview = (self.content[:20] + "...") if self.content else ""
         return f'Post by {self.author.username}: {preview}'
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('posts:post_detail', args=[str(self.id)])

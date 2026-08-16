@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.author.username }}: пост{% endblock %}
+
+{% block content %}
+  <article>
+    <h1>{{ post|truncatechars:60 }}</h1>
+    <p><small>Автор: {{ post.author.username }} • Опубликовано: {{ post.created_at|date:"d.m.Y H:i" }} • Обновлено: {{ post.updated_at|date:"d.m.Y H:i" }}</small></p>
+
+    {% if post.content %}
+      <div class="post-content">{{ post.content|linebreaks }}</div>
+    {% endif %}
+
+    {% if post.image %}
+      <img src="{{ post.image.url }}" alt="К посту" style="max-width: 100%; height: auto; margin-top: 1rem;">
+    {% endif %}
+  </article>
+
+  <p>
+    <a href="{% url 'posts:post_list' %}" class="btn">Вернуться к ленте</a>
+    {% if user == post.author %}
+      <a href="{% url 'posts:post_edit' post.pk %}" class="btn">Редактировать</a>
+      <a href="{% url 'posts:post_delete' post.pk %}" class="btn" style="color: red;">Удалить</a>
+    {% endif %}
+  </p>
+{% endblock %}
