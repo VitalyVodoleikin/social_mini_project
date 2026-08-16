@@ -1,3 +1,28 @@
+from django.core.exceptions import ValidationError
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
+class CustomUser(AbstractUser):
+    email = models.EmailField(max_length=254, verbose_name="Почта", unique=True)
+    username = models.CharField(max_length=150, verbose_name="Логин", unique=True)
+    password = models.CharField(max_length=150, verbose_name="Пароль")
+    first_name = models.CharField(max_length=150, verbose_name="Имя")
+    last_name = models.CharField(max_length=150, verbose_name="Фамилия")
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField("Персонал сайта", default=False)
+    avatar = models.ImageField(verbose_name="Аватар", blank=True, null=True, upload_to='avatars/')
+    bio = models.TextField(max_length=500, blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
+
+    class Meta:
+        ordering = ("pk", "username")
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
+
+    def __str__(self):
+        return self.username
+
+    def validate_file_size(value):
+        max_size_mb = 10
+        if value.size > max_size_mb * 1024 * 1024:
+            raise ValidationError(f'Файл не должен превышать {max_size_mb} МБ.')
