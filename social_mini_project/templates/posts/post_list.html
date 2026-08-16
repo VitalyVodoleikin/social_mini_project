@@ -56,6 +56,6 @@
   {% if user.is_authenticated %}
     <p><a href="{% url 'posts:post_create' %}" class="btn">Создать пост</a></p>
   {% else %}
-    <p><a href="{% url 'login' %}" class="btn">Войдите, чтобы создавать посты</a></p>
+    <p><a href="{% url 'users:login' %}" class="btn">Войдите, чтобы создавать посты</a></p>
   {% endif %}
 {% endblock %}
