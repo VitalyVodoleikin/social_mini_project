@@ -12,7 +12,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(
         template_name='users/login.html',
         redirect_authenticated_user=True
-    ), name='login')
+    ), name='login'),
     path('logout/', views.UserLogoutView.as_view(), name='logout'),
 
     # Профили
