@@ -1,3 +1,47 @@
-from django.shortcuts import render
+from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import DetailView
+from django.views.generic.edit import FormView, UpdateView
+from django.urls import reverse_lazy
 
-# Create your views here.
+from .forms import EditingProfileForm, RegistrationProfileForm
+from .models import CustomUser
+
+
+class RegisterView(FormView):
+    template_name = "users/register.html"
+    form_class = EditingProfileForm
+    success_url = reverse_lazy("login")
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return super().form_valid(form)
+
+
+class UserLoginView(LoginView):
+    template_name = "users/login.html"
+
+
+class UserLogoutView(LogoutView):
+    next_page = reverse_lazy("post_list")
+
+
+class ProfileView(DetailView):
+    model = CustomUser
+    template_name = "users/profile.html"
+    context_object_name = "profile_user"
+    slug_field = "username"
+    slug_url_kwarg = "username"
+
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = CustomUser
+    form_class = RegistrationProfileForm
+    template_name = "users/profile_edit.html"
+    success_url = reverse_lazy("post_list")
+
+    def get_object(self, queryset=None):
+        # Разрешаем редактировать только свой профиль
+        return self.request.user
