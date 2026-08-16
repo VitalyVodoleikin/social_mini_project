@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать профиль</title>
+</head>
+<body>
+    <h1>Редактирование профиля</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+    <p><a href="{% url 'users:profile' profile_user.username %}">Вернуться к профилю</a></p>
+</body>
+</html>
