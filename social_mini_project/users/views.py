@@ -11,8 +11,8 @@ from .models import CustomUser
 
 class RegisterView(FormView):
     template_name = "users/register.html"
-    form_class = EditingProfileForm
-    success_url = reverse_lazy("login")
+    form_class = RegistrationProfileForm
+    success_url = reverse_lazy("users:login")
 
     def form_valid(self, form):
         user = form.save()
@@ -38,10 +38,10 @@ class ProfileView(DetailView):
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = CustomUser
-    form_class = RegistrationProfileForm
+    form_class = EditingProfileForm
     template_name = "users/profile_edit.html"
     success_url = reverse_lazy("post_list")
 
     def get_object(self, queryset=None):
-        # Разрешаем редактировать только свой профиль
+        # Редактирование только своего профиля
         return self.request.user

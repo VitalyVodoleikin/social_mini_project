@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, validate_file_size
 
 
 class RegistrationProfileForm(UserCreationForm):
@@ -22,7 +22,7 @@ class RegistrationProfileForm(UserCreationForm):
 
 
 class EditingProfileForm(forms.ModelForm):
-    avatar = forms.ImageField(required=False, validators=[CustomUser.validate_file_size])
+    avatar = forms.ImageField(required=False, validators=[validate_file_size])
 
     class Meta:
         model = CustomUser

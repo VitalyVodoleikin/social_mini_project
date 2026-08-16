@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
 
     avatar = models.ImageField(verbose_name="Аватар", blank=True, null=True, upload_to='avatars/')
     bio = models.TextField(max_length=500, verbose_name="О себе", blank=True, null=True)
-    date_of_birth = models.DateField(verbose_name="Дата рождения", lank=True, null=True)
+    date_of_birth = models.DateField(verbose_name="Дата рождения", blank=True, null=True)
 
     class Meta:
         ordering = ("pk", "username")
