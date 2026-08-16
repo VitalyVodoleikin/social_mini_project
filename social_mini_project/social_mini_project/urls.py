@@ -11,7 +11,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
 
     # URL приложений
-    path("posts/", include("posts.urls", namespace="posts")),
+    # path("posts/", include("posts.urls", namespace="posts")),
+    path("", include("posts.urls", namespace="posts")),
     path("users/", include("users.urls", namespace="users")),
 ]
 
