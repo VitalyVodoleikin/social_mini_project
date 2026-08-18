@@ -1,0 +1,146 @@
+[
+  {
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$JqfKk63PrNl10rcR0GiFPj$yx9cPM2RMlsKO9TcB6RjWkGc/Xx124dcOAxl9QP9v7Y=",
+      "last_login": "2026-03-20 00:00:01.000001",
+      "is_superuser": 0,
+      "first_name": "user3",
+      "last_name": "user3",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user3@example-email.com",
+      "username": "user3",
+      "avatar": "../media/avatar/avatar-3.png",
+      "bio": "User 3. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$hCF8U5S8Y1msHYFmOUVQZt$9/g1U3zjNzDrcQzzWOwZSs+cVIbAStBa/7jwt8U/qjc=",
+      "last_login": "2026-03-20 00:00:01.000002",
+      "is_superuser": 0,
+      "first_name": "user4",
+      "last_name": "user4",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user4@example-email.com",
+      "username": "user4",
+      "avatar": "../media/avatar/avatar-4.png",
+      "bio": "User 4. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$m5VIFoFCjfDarqqMBJTnff$1XQ04odNzjFEJejwF07TpUGb2l76NC5v9G9S5Rn5RPE=",
+      "last_login": "2026-03-20 00:00:01.000003",
+      "is_superuser": 0,
+      "first_name": "user5",
+      "last_name": "user5",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user5@example-email.com",
+      "username": "user5",
+      "avatar": "../media/avatar/avatar-5.png",
+      "bio": "User 5. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$7dgOoEz2krRd9Xp2v5VFM7$48mdePcGNSJ7RK1UMta1i+xIdu1Zd5KZI3b9psEZrYE=",
+      "last_login": "2026-03-20 00:00:01.000004",
+      "is_superuser": 0,
+      "first_name": "user6",
+      "last_name": "user6",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user6@example-email.com",
+      "username": "user6",
+      "avatar": "../media/avatar/avatar-6.png",
+      "bio": "User 6. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$eveWK7dBPIvYqi6Eq5vWz2$7AewBELE4Upfrt70mMNm9cUXJ96WNmS9AoeP+i3l+KA=",
+      "last_login": "2026-03-20 00:00:01.000005",
+      "is_superuser": 0,
+      "first_name": "user7",
+      "last_name": "user7",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user7@example-email.com",
+      "username": "user7",
+      "avatar": "../media/avatar/avatar-7.png",
+      "bio": "User 7. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$66NWF9WGMR05zw8yFfby5F$iP2a0W70hLa4gJPRk8Zjdrx90ZXJhizsHIlaaSar/4U=",
+      "last_login": "2026-03-20 00:00:01.000006",
+      "is_superuser": 0,
+      "first_name": "user8",
+      "last_name": "user8",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user8@example-email.com",
+      "username": "user8",
+      "avatar": "../media/avatar/avatar-8.png",
+      "bio": "User 8. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$3sTjZnISgfDmmCZhAwUNzV$L4vt9y0UtQeKvIGcTrpnr4QPaM0sY3nzF6WaSPfVQAE=",
+      "last_login": "2026-03-20 00:00:01.000007",
+      "is_superuser": 0,
+      "first_name": "user9",
+      "last_name": "user9",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user9@example-email.com",
+      "username": "user9",
+      "avatar": "../media/avatar/avatar-9.png",
+      "bio": "User 9. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$OGy3Sw5AFFb7ieyaLhJp3t$q8pXmysAJ2ch2I6MJvda/uvIAc+PuC2jv8RF72sgJd0=",
+      "last_login": "2026-03-20 00:00:01.000008",
+      "is_superuser": 0,
+      "first_name": "user10",
+      "last_name": "user10",
+      "is_staff": 0,
+      "is_active": 1,
+      "email": "user10@example-email.com",
+      "username": "user10",
+      "avatar": "../media/avatar/avatar-10.png",
+      "bio": "User 10. About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.About_me.",
+      "date_of_birth": "2000-01-15"
+    }
+  }
+]

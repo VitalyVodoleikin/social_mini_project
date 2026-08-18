@@ -1,0 +1,70 @@
+
+1)					superuser
+username			user1
+first_name			user1
+last_username		user1
+E-mail				user1@example-email.com
+password			pass_user1
+
+2)					superuser
+username			user2
+first_name			user2
+last_username		user2
+E-mail				user2@example-email.com
+password			pass_user2
+
+3)					user
+username			user3
+first_name			user3
+last_username		user3
+E-mail				user3@example-email.com
+password			pass_user3
+
+4)					user
+username			user4
+first_name			user4
+last_username		user4
+E-mail				user4@example-email.com
+password			pass_user4
+
+5)					user
+username			user5
+first_name			user5
+last_username		user5
+E-mail				user5@example-email.com
+password			pass_user5
+
+6)					user
+username			user6
+first_name			user6
+last_username		user6
+E-mail				user6@example-email.com
+password			pass_user6
+
+7)					user
+username			user7
+first_name			user7
+last_username		user7
+E-mail				user7@example-email.com
+password			pass_user7
+
+8)					user
+username			user8
+first_name			user8
+last_username		user8
+E-mail				user8@example-email.com
+password			pass_user8
+
+9)					user
+username			user9
+first_name			user9
+last_username		user9
+E-mail				user9@example-email.com
+password			pass_user9
+
+10)					user
+username			user10
+first_name			user10
+last_username		user10
+E-mail				user10@example-email.com
+password			pass_user10

@@ -1,4 +1,0 @@
-1)
-Логин               user_Super
-Почта               user_Super@example.com
-Password            user_Super_123
