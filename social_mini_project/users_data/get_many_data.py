@@ -69,7 +69,7 @@ def get_many_test_simple_users_accounts_dump_file(
                 "email": f"user{simple_user}@example-email.com",
                 "username": f"user{simple_user}",
                 "avatar": avatar_path + f"-{simple_user}.png",
-                "bio": f"User {simple_user}. {'About_me.' * 30}",
+                "bio": f"User {simple_user}. {'About_me.' * 5}",
                 "date_of_birth": "2000-01-15"
             }
         }
