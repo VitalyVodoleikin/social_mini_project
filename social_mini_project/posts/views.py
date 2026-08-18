@@ -43,7 +43,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
     template_name = "posts/post_form.html"
-    success_url = reverse_lazy("post_list")
+    success_url = reverse_lazy("posts:post_list")
 
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -54,7 +54,7 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
-    success_url = reverse_lazy("post_list")
+    success_url = reverse_lazy("posts:post_list")
     template_name = "posts/post_confirm_delete.html"
 
     def dispatch(self, request, *args, **kwargs):

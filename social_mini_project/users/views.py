@@ -25,7 +25,7 @@ class UserLoginView(LoginView):
 
 
 class UserLogoutView(LogoutView):
-    next_page = reverse_lazy("post_list")
+    next_page = reverse_lazy("posts:post_list")
 
 
 class ProfileView(DetailView):
