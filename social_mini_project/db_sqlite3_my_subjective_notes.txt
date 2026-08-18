@@ -1,0 +1,19 @@
+# Некоторые команды дляработы с БД...
+DELETE FROM users_customuser;
+DELETE FROM posts_post;
+UPDATE sqlite_sequence SET seq = 0 WHERE name = 'users_customuser';
+UPDATE sqlite_sequence SET seq = 0 WHERE name = 'posts_post';
+
+??? - UPDATE users_customuser SET avatar = 'media/avatar_images/avatar-1.png' WHERE id = 1;
+??? - UPDATE users_customuser SET avatar = 'media/avatar_images/avatar-2.png' WHERE id = 2;
+
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-1.png' WHERE id = 1;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-2.png' WHERE id = 2;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-3.png' WHERE id = 3;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-4.png' WHERE id = 4;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-5.png' WHERE id = 5;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-6.png' WHERE id = 6;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-7.png' WHERE id = 7;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-8.png' WHERE id = 8;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-9.png' WHERE id = 9;
+UPDATE users_customuser SET avatar = 'avatar/images/avatar-image-10.png' WHERE id = 10;
