@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+  Контакты
+{% endblock %}
+
+{% block content %}
+
+    <h4 class="frame_width">
+      Информация по проекту  
+    </h4>
+
+    <article class="additional_design frame_width gradient_about">
+    <img src="{% static 'img/project_logo.png' %}" width="130" height="130" alt="LOGOTIPE" align="center" 
+        style="float: left; margin-right: 40px; border-radius: 20%;">
+    
+    <ul>
+      <li>
+        Название проекта: MiniSocial          
+      </li>
+      <li>
+        Тип проекта: Pet-проект
+      </li>
+      <li>
+        Период создания проекта: 15.08.2026 - 21.08.2026 гг.
+      </li>
+      <li>
+        Используемые технологии (Stack): Python3, Django, SQLite3, .env, HTML, CSS
+      </li>
+      <li>
+        Проект для демонстрации
+      </li>
+    </ul>  
+    </article>  
+    <br>
+
+
+    <hr>
+
+    
+    <br>
+    <h4 class="frame_width">
+      Виталий В.  
+    </h4>
+
+    <article class="additional_design frame_width gradient_about">
+    <img src="{% static 'img/avatar.jpg' %}" width="130" height="130" alt="Фото" align="center" 
+          style="float: left; margin-right: 40px; border-radius: 20%;">
+    
+    <ul>
+      <li>
+        E-mail: vodoleikin@yandex.ru
+      </li>
+      <li>
+        Ссылка на GitHub: <a href="https://github.com/VitalyVodoleikin">https://github.com/VitalyVodoleikin</a>
+      </li>
+      <li>
+        Ссылка на профиль Степик: <a href="https://stepik.org/users/649747163/">https://stepik.org/users/649747163/</a>
+      </li>
+      <li>
+        Зеркала GitHub: <br>
+        <ul>
+            <li>
+                Ссылка на GitFlic: <a href="https://gitflic.ru/user/vitalyvodoleikin">https://gitflic.ru/user/vitalyvodoleikin</a>
+            </li>
+            <li>
+                Ссылка на GitVerse: <a href="https://gitverse.ru/vodoleikin">https://gitverse.ru/vodoleikin</a>
+            </li>
+        </ul>
+      </li>
+
+    </ul>               
+    </article>                
+{% endblock %}
