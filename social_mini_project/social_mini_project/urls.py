@@ -14,7 +14,9 @@ urlpatterns = [
     # path("posts/", include("posts.urls", namespace="posts")),
     path("", include("posts.urls", namespace="posts")),
     path("users/", include("users.urls", namespace="users")),
+    path("pages/", include("pages.urls")),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
