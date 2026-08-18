@@ -3,24 +3,68 @@
 {% block title %}{{ post.author.username }}: пост{% endblock %}
 
 {% block content %}
-  <article>
-    <h1>{{ post|truncatechars:60 }}</h1>
-    <p><small>Автор: {{ post.author.username }} • Опубликовано: {{ post.created_at|date:"d.m.Y H:i" }} • Обновлено: {{ post.updated_at|date:"d.m.Y H:i" }}</small></p>
-
-    {% if post.content %}
-      <div class="post-content">{{ post.content|linebreaks }}</div>
-    {% endif %}
-
-    {% if post.image %}
-      <img src="{{ post.image.url }}" alt="К посту" style="max-width: 100%; height: auto; margin-top: 1rem;">
-    {% endif %}
-  </article>
+<article class="additional_design frame_width gradient_posts">
+  <h1><b>{{ post|truncatechars:20 }}</b></h1>
 
   <p>
-    <a href="{% url 'posts:post_list' %}" class="btn">Вернуться к ленте</a>
-    {% if user == post.author %}
-      <a href="{% url 'posts:post_edit' post.pk %}" class="btn">Редактировать</a>
-      <a href="{% url 'posts:post_delete' post.pk %}" class="btn" style="color: red;">Удалить</a>
-    {% endif %}
+    <small>
+      Автор: <a href="{% url 'users:profile' post.author.username %}">
+              {{ post.author.username }}
+            </a> • 
+      Опубликовано: {{ post.created_at|date:"d.m.Y H:i" }} • 
+      Обновлено: {{ post.updated_at|date:"d.m.Y H:i" }}
+    </small>
   </p>
+
+  {% if post.image %}
+    <img src="{{ post.image.url }}" alt="К посту" style="max-width: 100%; height: auto; margin-top: 1rem;">
+    <br>
+  {% endif %}
+
+  {% if post.content %}
+    <br>
+    <div class="post-content">{{ post.content|linebreaks }}</div>
+    <br>
+  {% endif %}
+</article>
+
+<p style="text-align: center; margin-top: 1.5rem;">
+  <!-- «Вернуться к ленте»: ссылка, стилизованная как кнопка -->
+  <a href="{% url 'posts:post_list' %}"
+     style="display: inline-block;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 10px;
+            margin-right: 8px;">
+    Вернуться к ленте
+  </a>
+
+  {% if user == post.author %}
+    <!-- «Редактировать»: ссылка, стилизованная как кнопка -->
+    <a href="{% url 'posts:post_edit' post.pk %}"
+       style="display: inline-block;
+              background-color: #ffa600;
+              color: white;
+              text-decoration: none;
+              border: none;
+              padding: 6px 16px;
+              border-radius: 10px;
+              margin-right: 8px;">
+      Редактировать
+    </a>
+
+    <!-- «Удалить»: ссылка на подтверждение, НЕ удаляет сразу -->
+    <a href="{% url 'posts:post_delete' post.pk %}"
+       style="color: white;
+              background-color: #dc3545;
+              text-decoration: none;
+              padding: 6px 16px;
+              border-radius: 10px;">
+      Удалить
+    </a>
+  {% endif %}
+</p>
 {% endblock %}

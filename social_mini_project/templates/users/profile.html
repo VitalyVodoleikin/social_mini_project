@@ -3,21 +3,44 @@
 {% block title %}{{ profile_user.username }} — профиль{% endblock %}
 
 {% block content %}
-  <h1>{{ profile_user.username }}</h1>
+  <h1 class="frame_width">
+    <b>
+      {{ profile_user.username }}
+    </b>
+  </h1>
+
+<article class="additional_design frame_width gradient_posts">
 
   {% if profile_user.avatar %}
-    <img src="{{ profile_user.avatar.url }}" alt="Аватар" class="img-thumbnail" style="max-width: 200px;">
+    <img src="{{ profile_user.avatar.url }}" alt="Аватар" class="img-thumbnail" style="max-width: 300px;">
   {% else %}
     <p>Аватар не загружен.</p>
   {% endif %}
 
+  <br>
+  <br>
   <ul class="list-group">
-    <li class="list-group-item"><strong>Имя:</strong> {{ profile_user.first_name|default:"—" }}</li>
-    <li class="list-group-item"><strong>Фамилия:</strong> {{ profile_user.last_name|default:"—" }}</li>
-    <li class="list-group-item"><strong>Email:</strong> {{ profile_user.email|default:"—" }}</li>
+    <li class="list-group-item">
+        <strong>
+          Имя:
+        </strong>
+      {{ profile_user.first_name|default:"—" }}
+    </li>
+    <li class="list-group-item">
+        <strong>
+          Фамилия:
+        </strong>
+      {{ profile_user.last_name|default:"—" }}
+    </li>
+    <li class="list-group-item">
+        <strong>
+          Email:
+        </strong>
+      {{ profile_user.email|default:"—" }}
+    </li>
 
     {% if profile_user.bio %}
-      <li class="list-group-item"><strong>О себе:</strong> {{ profile_user.bio }}</li>
+      <li class="list-group-item"><strong>О себе:</strong> {{ profile_user.bio|linebreaksbr }}</li>
     {% endif %}
 
     {% if profile_user.date_of_birth %}
@@ -30,4 +53,5 @@
       <a href="{% url 'users:profile_edit' %}" class="btn btn-secondary">Редактировать профиль</a>
     </p>
   {% endif %}
+</article>
 {% endblock %}

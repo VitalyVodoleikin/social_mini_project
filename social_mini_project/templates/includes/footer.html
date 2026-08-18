@@ -1,0 +1,26 @@
+{% with request.resolver_match.view_name as view_name %}
+
+<footer class="border-top text-center py-3">
+    <p>© MiniSocial. 
+        {% if view_name == 'pages:about' %}Август, 2026</p>{% endif %}
+    {% if view_name == 'pages:about' %}
+    <br>
+    <p>
+        Сайт подготовил<br>
+        Виталий В.<br>
+        
+        <form action="{% url 'pages:contacts' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit"
+                    class="btn btn-sm btn-danger"
+                    style="padding: 6px 12px;">
+                Связаться
+            </button>
+        </form>
+
+    </p> 
+    <br>
+    {% endif %}
+</footer>
+
+{% endwith %}

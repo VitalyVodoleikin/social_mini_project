@@ -3,12 +3,45 @@
 {% block title %}Удаление поста{% endblock %}
 
 {% block content %}
-  <h1>Подтверждение удаления</h1>
-  <p>Вы уверены, что хотите удалить пост «{{ post }}»?</p>
+<article class="additional_design frame_width gradient_posts">
+  <h1>
+    <b>
+      Подтверждение удаления
+    </b>
+  </h1>
 
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn" style="color: red;">Да, удалить</button>
-    <a href="{% url 'posts:post_detail' post.pk %}" class="btn">Отмена</a>
-  </form>
+  <p>
+    Вы уверены, что хотите удалить этот пост?<br>
+    <strong>«{{ post }}»</strong>
+  </p>
+
+  <p>
+    <small>
+      Автор: {{ post.author.username }} • {{ post.created_at|date:"d.m.Y H:i" }}
+    </small>
+  </p>
+
+  <!-- Кнопка «Отмена»: URL вынесен в JS -->
+  <script>
+    const cancelUrl = '{% url "posts:post_detail" post.pk %}';
+  </script>
+
+  <p style="text-align: center; margin-top: 1.5rem;">
+    <form method="post">
+      {% csrf_token %}
+
+      <button type="submit"
+              style="background-color: #ff0000; color: white; border: none; padding: 6px 16px; border-radius: 10px; margin-right: 8px;">
+        Да, удалить
+      </button>
+
+      <!-- Кнопка «Отмена»: НЕ отправляет форму, просто редирект -->
+      <button type="button"
+              onclick="window.location.href = cancelUrl"
+              style="background-color: #007bff; color: white; border: none; padding: 6px 16px; border-radius: 10px;">
+        Отмена
+      </button>
+    </form>
+  </p>
+</article>
 {% endblock %}

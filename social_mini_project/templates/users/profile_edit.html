@@ -3,34 +3,45 @@
 {% block title %}Редактировать профиль{% endblock %}
 
 {% block content %}
-  <h1>Редактирование профиля</h1>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
+  <h1 class="frame_width">
+    <b>
+      Редактирование профиля
+    </b>
+  </h1>
 
-    <div class="mb-3">
-      <label for="{{ form.avatar.id_for_label }}" class="form-label">Аватар</label>
-      {{ form.avatar }}
-      {{ form.avatar.errors }}
-    </div>
+  <article class="additional_design frame_width gradient_posts">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
 
-    <div class="mb-3">
-      <label for="{{ form.bio.id_for_label }}" class="form-label">О себе</label>
-      {{ form.bio }}
-      {{ form.bio.errors }}
-      <small class="text-muted">{{ form.bio.help_text }}</small>
-    </div>
+      <p style="text-align: center;">
+        <div class="mb-3">
+          <label for="{{ form.avatar.id_for_label }}" class="form-label">Аватар</label>
+          {{ form.avatar }}
+          {{ form.avatar.errors }}
+        </div>
 
-    <div class="mb-3">
-      <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">Дата рождения</label>
-      {{ form.date_of_birth }}
-      {{ form.date_of_birth.errors }}
-    </div>
+        <div class="mb-3">
+          <label for="{{ form.bio.id_for_label }}" class="form-label">О себе</label>
+          {{ form.bio }}
+          {{ form.bio.errors }}
+          <small class="text-muted">{{ form.bio.help_text }}</small>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
-  </form>
+        <div class="mb-3">
+          <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">Дата рождения</label>
+          {{ form.date_of_birth }}
+          {{ form.date_of_birth.errors }}
+        </div>
 
-  <p class="mt-3">
-    <a href="{% url 'users:profile' profile_user.username %}" class="btn btn-outline-secondary">Вернуться к профилю</a>
-  </p>
+        <button type="submit" class="btn btn-primary">
+          Сохранить изменения
+        </button>
+
+        <a href="{% url 'users:profile' object.username %}" class="btn btn-outline-secondary">
+          Вернуться к профилю
+        </a>
+      </p>
+    </form>
+  </article>
 {% endblock %}

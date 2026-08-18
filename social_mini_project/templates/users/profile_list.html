@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Лента постов{% endblock %}
+
+{% block content %}
+  <h1 class="frame_width">
+    <b>
+      Пользователи сервиса
+    </b>
+  </h1>
+
+  <hr>
+
+  {% if profiles %}
+    {% for profile in profiles %}
+    
+      <article class="additional_design frame_width gradient_posts">
+        
+        <h1>
+          <b>
+            <a href="{% url 'users:profile' profile.username %}">
+              {{ profile }}
+            </a>
+          </b>
+        </h1>
+
+        {% if profile.avatar %}
+        <img src="{{ profile.avatar.url }}" alt="Аватар" class="img-thumbnail" style="max-width: 300px;">
+        {% else %}
+        <p>Аватар не загружен.</p>
+        {% endif %}
+
+        <br>
+        <br>
+        <ul class="list-group">
+            <li class="list-group-item">
+                    <strong>
+                        Имя:
+                    </strong>
+                {{ profile.first_name|default:"—" }}
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    Фамилия:
+                </strong> 
+                {{ profile.last_name|default:"—" }}
+            </li>
+            <li class="list-group-item">
+                    <strong>
+                        Email:
+                    </strong>
+                {{profile.email|default:"—" }}
+            </li>
+
+            {% if profile.bio %}
+                <li class="list-group-item">
+                        <strong>
+                            О себе:
+                        </strong> 
+                    {{ profile.bio|linebreaksbr }}
+                </li>
+            {% endif %}
+
+            {% if profile.date_of_birth %}
+                <li class="list-group-item">
+                        <strong>
+                            Дата рождения:
+                        </strong> 
+                    {{ profile.date_of_birth }}
+                </li>
+            {% endif %}
+        </ul>
+
+        {% if user.is_authenticated and user.username == profile.username %}
+        <p class="mt-3">
+            <a href="{% url 'users:profile_edit' %}" class="btn btn-secondary">
+                Редактировать профиль
+            </a>
+        </p>
+        {% endif %}
+
+      </article>
+    {% endfor %}
+
+    <!-- Пагинация -->
+    <hr>
+
+    <nav aria-label="Pagination" style="text-align: center;">
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">
+            <button type="submit" 
+                    style="background-color: #297a04; color: white; border: none; padding: 3px 15px; border-radius: 10px;">
+              ← Предыдущая
+            </button>
+            </a>
+        {% endif %}
+
+        <span class="current">
+          <h4>
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+          </h4>
+        </span>
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">
+            <button type="submit" 
+                    style="background-color: #297a04; color: white; border: none; padding: 3px 15px; border-radius: 10px;">
+              Следующая →
+            </button>
+          </a>
+        {% endif %}
+      </span>
+    </nav>
+
+    <br>
+    
+  {% else %}
+    <p>Постов пока нет.</p>
+  {% endif %}
+
+{% endblock %}

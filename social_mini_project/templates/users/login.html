@@ -3,13 +3,28 @@
 {% block title %}Вход в систему{% endblock %}
 
 {% block content %}
-  <h1>Вход в систему</h1>
+<h1 class="frame_width">
+  <b>
+    Вход в систему
+  </b>
+</h1>  
+
+<article class="additional_design frame_width gradient_posts">
   <form method="post">
+
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Войти</button>
+
+    <p style="text-align: center;"></p>
+      <button type="submit" class="btn btn-primary">
+        Войти
+      </button>
+
+      <a href="{% url 'users:register' %}" class="btn btn-outline-secondary">
+        Нет аккаунта? Зарегистрироваться
+      </a>
+    </p>
+    
   </form>
-  <p>
-    <a href="{% url 'users:register' %}" class="btn btn-outline-secondary">Нет аккаунта? Зарегистрироваться</a>
-  </p>
+</article>
 {% endblock %}

@@ -3,53 +3,103 @@
 {% block title %}Лента постов{% endblock %}
 
 {% block content %}
-  <h1>Лента постов</h1>
+  <h1 class="frame_width">
+    <b>
+      Лента постов
+    </b>
+  </h1>
+
+  <hr>
 
   {% if posts %}
     {% for post in posts %}
+      <!--
       <article style="margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
+      -->
+      <article class="additional_design frame_width gradient_posts">
         <h2>
           <a href="{% url 'posts:post_detail' post.pk %}">
             {{ post|truncatechars:50 }}
           </a>
         </h2>
-        <p><small>Автор: {{ post.author.username }} • {{ post.created_at|date:"d.m.Y H:i" }}</small></p>
-
-        {% if post.content %}
-          <p>{{ post.content|linebreaks }}</p>
-        {% endif %}
+        <p>
+          <small>
+            Автор: <a href="{% url 'users:profile' post.author.username %}">
+                    {{ post.author.username }}
+                  </a> • 
+            Опубликовано: {{ post.created_at|date:"d.m.Y H:i" }} • 
+            Обновлено: {{ post.updated_at|date:"d.m.Y H:i" }}
+          </small>
+        </p>
 
         {% if post.image %}
           <img src="{{ post.image.url }}" alt="Изображение к посту" style="max-width: 100%; height: auto;">
         {% endif %}
+        
+        {% if post.content %}
+          <p>{{ post.content|linebreaks|truncatechars:150 }}</p>
+        {% endif %}
 
-        <p>
-          <a href="{% url 'posts:post_detail' post.pk %}" class="btn btn-sm">Подробнее</a>
+        <p style="text-align: center;">
+          <a href="{% url 'posts:post_detail' post.pk %}">
+            <button type="submit" 
+                    style="background-color: #007bff; color: white; border: none; padding: 3px 15px; border-radius: 10px;">
+              Подробнее
+            </button>
+          </a>
           {% if user == post.author %}
-            <a href="{% url 'posts:post_edit' post.pk %}" class="btn btn-sm btn-warning">Редактировать</a>
-            <a href="{% url 'posts:post_delete' post.pk %}" class="btn btn-sm btn-danger">Удалить</a>
+            <a href="{% url 'posts:post_edit' post.pk %}">
+            <button type="submit" 
+                    style="background-color: #ffa600; color: white; border: none; padding: 3px 15px; border-radius: 10px;">
+              Редактировать
+            </button>
+            </a>
+            <a href="{% url 'posts:post_delete' post.pk %}">
+            <button type="submit" 
+                    style="background-color: #ff0000; color: white; border: none; padding: 3px 15px; border-radius: 10px;">
+              Удалить
+            </button>
+            </a>
           {% endif %}
         </p>
       </article>
     {% endfor %}
 
     <!-- Пагинация -->
-    <nav aria-label="Pagination">
+    <hr>
+
+    <nav aria-label="Pagination" style="text-align: center;">
       <span class="step-links">
         {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">← Предыдущая</a>
+          <a href="?page={{ page_obj.previous_page_number }}">
+            <button type="submit" 
+                    style="background-color: #297a04; color: white; border: none; padding: 3px 15px; border-radius: 10px;">
+              ← Предыдущая
+            </button>
+            </a>
         {% endif %}
 
         <span class="current">
-          Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+          <h4>
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+          </h4>
         </span>
 
         {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">Следующая →</a>
+          <a href="?page={{ page_obj.next_page_number }}">
+            <button type="submit" 
+                    style="background-color: #297a04; color: white; border: none; padding: 3px 15px; border-radius: 10px;">
+              Следующая →
+            </button>
+          </a>
         {% endif %}
       </span>
     </nav>
+
+    <br>
+    
   {% else %}
     <p>Постов пока нет.</p>
   {% endif %}
+
 {% endblock %}

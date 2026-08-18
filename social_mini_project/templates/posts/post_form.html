@@ -3,28 +3,46 @@
 {% block title %}{% if object %}Редактировать пост{% else %}Создать пост{% endif %}{% endblock %}
 
 {% block content %}
-  <h1>{% if object %}Редактировать{% else %}Создать{% endif %} пост</h1>
+<h1 class="frame_width">
+  {% if object %}Редактировать{% else %}Создать{% endif %} пост
+</h1>
 
+<article class="additional_design frame_width gradient_posts">
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-
     {{ form.non_field_errors }}
 
     <div style="margin-bottom: 1rem;">
-      <label for="{{ form.content.id_for_label }}">Текст поста</label>
+      <label for="{{ form.image.id_for_label }}"><h3>Изображение</h3></label>
+      <br>
+      {{ form.image }}
+      <br>
+      {{ form.image.errors }}
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <label for="{{ form.content.id_for_label }}"><h3>Текст поста</h3></label>
+      <br>
       {{ form.content }}
       {{ form.content.errors }}
       <small>{{ form.content.help_text }}</small>
     </div>
 
-    <div style="margin-bottom: 1rem;">
-      <label for="{{ form.image.id_for_label }}">Изображение</label>
-      {{ form.image }}
-      {{ form.image.errors }}
-    </div>
+    <button type="submit"
+            style="background-color: #007bff; color: white; border: none; padding: 6px 16px; border-radius: 10px; margin-right: 8px;">
+      {% if object %}Сохранить изменения{% else %}Опубликовать{% endif %}
+    </button>
 
-    <button type="submit" class="btn">{% if object %}Сохранить изменения{% else %}Опубликовать{% endif %}</button>
+    <!-- Кнопка «Отмена»: URL вынесен в JS -->
+    <script>
+      const postListUrl = '{% url "posts:post_list" %}';
+    </script>
+
+    <button type="button"
+            onclick="window.location.href = postListUrl"
+            style="background-color: #ff0000; color: white; border: none; padding: 6px 16px; border-radius: 10px;">
+      Отмена
+    </button>
   </form>
-
-  <p><a href="{% url 'posts:post_list' %}" class="btn">Отмена</a></p>
+</article>
 {% endblock %}

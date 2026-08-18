@@ -1,6 +1,7 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import ListView
 from django.views.generic import DetailView
 from django.views.generic.edit import FormView, UpdateView
 from django.urls import reverse_lazy
@@ -40,8 +41,15 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = CustomUser
     form_class = EditingProfileForm
     template_name = "users/profile_edit.html"
-    success_url = reverse_lazy("post_list")
+    success_url = reverse_lazy("posts:post_list")
 
     def get_object(self, queryset=None):
         # Редактирование только своего профиля
         return self.request.user
+
+
+class ProfileListView(ListView):
+    model = CustomUser
+    template_name = "users/profile_list.html"
+    context_object_name = "profiles"
+    paginate_by = 10  # Пагинация оп 10 пользователей на странице
