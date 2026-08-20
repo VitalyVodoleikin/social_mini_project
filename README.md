@@ -20,6 +20,7 @@
 
 - Python
 - Django
+- SQLite
 - HTML
 - CSS
 - Git
